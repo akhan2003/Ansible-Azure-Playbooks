@@ -1,0 +1,27 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+        "adminUserName": {
+            "value": "cd3user"
+        },
+        "sshKeyData": {
+            "value": ""
+        },
+        "vmName": {
+            "value": "AUW1RHEWEBNDXD001"
+        },
+        "storageAccountName": {
+            "value": "w4otbt552c5cesasshvm"
+        },
+        "virtualNetworkName": {
+            "value": "sshVNET"
+        },
+        "networkSecurityGroupName": {
+            "value": "networkSecurityGroup1"
+        },
+        "subnet1Name": {
+            "value": "Subnet-1"
+        }
+    }
+}
