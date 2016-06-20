@@ -64,7 +64,7 @@
     {
       "apiVersion": "[variables('apiVersion')]",
       "type": "Microsoft.Network/networkInterfaces",
-      "name": "[parameters('nicName')]",
+      "name": "[variables('nicName')]",
       "location": "[variables('location')]",
       "properties": {
         "ipConfigurations": [
@@ -89,7 +89,7 @@
       "name": "[parameters('vmName')]",
       "location": "[variables('location')]",
       "dependsOn": [
-        "[concat('Microsoft.Network/networkInterfaces/', parameters('nicName'))]"
+        "[concat('Microsoft.Network/networkInterfaces/', variables('nicName'))]"
       ],
       "properties": {
         "hardwareProfile": {
