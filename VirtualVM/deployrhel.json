@@ -48,7 +48,7 @@
     }
   },
   "variables": {
-    "nicName": "[concat(parameters('vmName'),'/NIC')]",
+    "nicName": "[parameters('vmName')]",
     "vmSize": "Standard_DS2",
     "location": "[resourceGroup().location]",
     "imagePublisher": "RedHat",
