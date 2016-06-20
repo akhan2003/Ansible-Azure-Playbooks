@@ -6,7 +6,7 @@
             "value": "cd3user"
         },
         "sshKeyData": {
-            "value": ""
+            "value": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCufXvk+mf9sDBCLzWKhRC+/V13oY5a0QE48aBO0t7VZM+rfXlENIfD0tQyI7cVvOSoTb0ogvybbXruv2JSrrGwa9j0emlCl6pGECp+BElQbeG6HkI6IZPgY2xR5zgNN0Vs5F1GWQNXbdEcH4tD1geoMCWNV1nKx2QeFLgl780DX/cGsuM8sk0RcxDJtwvp9djLH59XK0gaqa1x9uC/gwIqtRsAaTU4JSaAY7+ndkn0wDIorezGlGExat28LNEj9H6oLWF3w4ynLYwcnVrq2csZk7YZ4Lr+feNlduBYAeXX+ksVwR4h4bH+uUp1/fM/h7pCSj7ibLDpY4MmbpoO7P1z root@precise64"
         },
         "vmName": {
             "value": "AUW1RHEWEBNDXD001"
