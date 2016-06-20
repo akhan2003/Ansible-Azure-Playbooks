@@ -22,13 +22,7 @@
         "description": "Virtual Machine name as a string."
       }
     },
-    "nicName": {
-      "type": "string",
-      "metadata": {
-        "description": "Network Interface Name as a string."
-      }
-    },
-	"storageAccountName": {
+    "storageAccountName": {
       "type": "string",
       "metadata": {
         "description": "Storage Account Name as a string."
@@ -54,12 +48,12 @@
     }
   },
   "variables": {
+    "nicName": "[concat('/home/',parameters('vmName'),'NIC')]",
     "vmSize": "Standard_DS2",
-    "uniqueDnsLabelPrefix": "[concat('store', uniquestring(resourceGroup().id))]",
     "location": "[resourceGroup().location]",
     "imagePublisher": "RedHat",
     "imageOffer": "RHEL",
-	"OSVersion": "7.2"
+    "OSVersion": "7.2"
     "osDiskName": "osDisk1",
     "sshKeyPath": "[concat('/home/',parameters('adminUserName'),'/.ssh/authorized_keys')]",
     "vnetID": "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]",
@@ -143,9 +137,9 @@
     }
   ],
     "outputs": {
-    "sshCommand": {
-      "type": "string",
-      "value": "[concat('ssh ', parameters('adminUsername'), '@', variables('uniqueDnsLabelPrefix'), '.', resourceGroup().location, '.cloudapp.azure.com')]"
-    } 
-  }
+        "adminUsername": {
+            "type": "String",
+            "value": "[parameters('adminUsername')]"
+        }
+    }
 }
