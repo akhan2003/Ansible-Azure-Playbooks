@@ -2,14 +2,26 @@
   "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "adminUsername": {
-      "value": "cd3user"
-    },
-    "adminPassword": {
-      "value": "cd#user"
-    },
-    "rhelOSVersion": {
-      "value": "7.2"
+        "adminUserName": {
+            "value": "cd3user"
+        },
+        "sshKeyData": {
+            "value": ""
+        },
+        "vmName": {
+            "value": "AUW1RHEWEBNDXD001"
+        },
+        "storageAccountName": {
+            "value": "w4otbt552c5cesasshvm"
+        },
+        "virtualNetworkName": {
+            "value": "BUYNONPROD1-VN"
+        },
+        "networkSecurityGroupName": {
+            "value": "networkSecurityGroup1"
+        },
+        "subnet1Name": {
+            "value": "BUYDEV1-PRIVATESN"
+        }
     }
-  }
 }
