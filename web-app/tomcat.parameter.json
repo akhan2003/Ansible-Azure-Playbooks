@@ -18,13 +18,13 @@
             "value": "AUE2RHEPOCWEBD001"
         },
         "storageAccountName": {
-            "value": "w4otbt552c5cesasshvm"
+            "value": "aue2strwebdev001"
         },
         "virtualNetworkName": {
             "value": "BUYNONPROD1-VN"
         },
         "networkSecurityGroupName": {
-            "value": "networkSecurityGroup1"
+            "value": "aue2nsgwebdev001"
         },
         "subnet1Name": {
             "value": "BUYDEV1-PRIVATESN"
