@@ -15,6 +15,24 @@
         "description": "SSH rsa public key file as a string."
       }
     },
+    "javaPackageName": {
+      "type": "string",
+      "defaultValue": "openjdk-7-jdk",
+      "allowedValues": [
+        "openjdk-6-jdk",
+        "openjdk-7-jdk",
+        "openjdk-8-jdk"
+      ]
+    },
+    "tomcatPackageName": {
+      "type": "string",
+      "defaultValue": "tomcat7",
+      "allowedValues": [
+        "tomcat6",
+        "tomcat7",
+        "tomcat8"
+      ]
+    },
     "vmName": {
       "type": "string",
       "metadata": {
@@ -148,7 +166,7 @@
         "typeHandlerVersion": "1.2",
         "settings": {
           "fileUris": [
-            "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/openjdk-tomcat-ubuntu-vm/java-tomcat-install.sh"
+            "https://raw.githubusercontent.com/praneethr/Ansible-Azure-Playbooks/master/web-app/java-tomcat-install.sh"
           ],
           "commandToExecute": "[concat('sh java-tomcat-install.sh',' ',parameters('javaPackageName'),' ',parameters('tomcatPackageName'))]"
         }
