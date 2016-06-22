@@ -112,7 +112,7 @@
           }
         ],
         "networkSecurityGroup": {
-            "id": "[resourceId('BUYNONPROD1-NW', 'Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroupName'))]"
+            "id": "[resourceId('BUYDEV1NDXNISRG-APP', 'Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroupName'))]"
         }
       }
     },
