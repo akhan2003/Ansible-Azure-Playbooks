@@ -12,7 +12,7 @@
         "value": "tomcat7"
         },
         "sshKeyData": {
-            "value": ""
+            "value": "ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAxBWuJFd+AjJJhcEWI+P93KaAAXUimjbK0PZQCsrM8ii1iAYfCmrKLblrNDDmKPB2ZWXyAGMaFWAVCaV/F9fx4P/zVKYb40jWLzWxe9ZdHhTTi1AOyejelKFUJShC2ezT6pq79YISTMtp95YD1NpXreRa7wrLyuhv15B92ryT+b5E8gRjQgxHidUEFilbF45LAZU3VXA1vumlqjhIei+Orm0H6wQ5kJTqiS00RWf8nCArG8W0qDzPIUQ+SbzWmgOX2dc0mE+DY0FYECcbzTixqAUlAMsUFwixMbtsZZAdW5Xv7U6Qwirk5kHnYrODmDYzb+Og5tY7MEpy5BznQE3D9w== cd3ans@dayrhecdxp003.enterprisenet.org"
         },
         "vmName": {
             "value": "AUE2RHEPOCWEBD001"
