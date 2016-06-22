@@ -5,6 +5,12 @@
         "adminUserName": {
             "value": "cd3user"
         },
+        "javaPackageName": {
+        "value": "openjdk-7-jdk"
+        },
+        "tomcatPackageName": {
+        "value": "tomcat7"
+        },
         "sshKeyData": {
             "value": ""
         },
