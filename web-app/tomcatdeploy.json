@@ -67,7 +67,7 @@
   "variables": {
     "nicName": "[parameters('vmName')]",
     "vmSize": "Standard_DS2",
-    "location": "eastus2",
+    "location": "[resourceGroup().location]",
     "imagePublisher": "RedHat",
     "imageOffer": "RHEL",
     "OSVersion": "7.2",
@@ -81,7 +81,7 @@
 	    "ServerRole": "WEB"
         },
     "sshKeyPath": "[concat('/home/',parameters('adminUserName'),'/.ssh/authorized_keys')]",
-    "vnetID": "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]",
+    "vnetID": "[resourceId('BUYNONPROD1-NW', 'Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]",
     "subnet1Ref": "[concat(variables('vnetID'),'/subnets/',parameters('subnet1Name'))]",
     "apiVersion": "2016-03-30"
   },
@@ -112,7 +112,7 @@
           }
         ],
         "networkSecurityGroup": {
-            "id": "[resourceId(resourceGroup().name, 'Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroupName'))]"
+            "id": "[resourceId('BUYNONPROD1-NW', 'Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroupName'))]"
         }
       }
     },
