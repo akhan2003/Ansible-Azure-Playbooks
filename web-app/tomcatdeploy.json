@@ -72,6 +72,14 @@
     "imageOffer": "RHEL",
     "OSVersion": "7.2",
     "osDiskName": "osDisk1",
+    "tags": {
+            "ApplicationName": "Tomcat POC"
+	    "CostCenter":  "5501936"
+            "Description": "POC server"
+	    "CreatedBy": "Praneeth Putha"
+            "Environment": "ALPHA"
+	    "ServerRole": "WEB"
+        },
     "sshKeyPath": "[concat('/home/',parameters('adminUserName'),'/.ssh/authorized_keys')]",
     "vnetID": "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]",
     "subnet1Ref": "[concat(variables('vnetID'),'/subnets/',parameters('subnet1Name'))]",
@@ -83,6 +91,14 @@
       "type": "Microsoft.Network/networkInterfaces",
       "name": "[variables('nicName')]",
       "location": "[variables('location')]",
+      "tags": {
+            "ApplicationName": "Tomcat POC"
+	    "CostCenter":  "5501936"
+            "Description": "POC server NIC"
+	    "CreatedBy": "Praneeth Putha"
+            "Environment": "ALPHA"
+	    "ServerRole": "WEB"
+        },
       "properties": {
         "ipConfigurations": [
           {
