@@ -45,7 +45,7 @@
         "ApplicationName": "Windows POC",
 	 "CostCenter": "5501936",
         "Description": "POC server Windows",
-        "Description1": "POC server WIndows NIC",
+        "Description1": "NIC for POC server WIndows ",
 	"CreatedBy": "NIS NDX CD Team",
         "Environment": "ALPHA",
 	"ServerRole": "WEB"
