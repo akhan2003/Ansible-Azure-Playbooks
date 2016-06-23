@@ -76,11 +76,11 @@
       "defaultValue": {
 	       "ApplicationName": "Linux POC",
 	       "CostCenter": "5501936",
-         "Description": "POC Sql Server",
-         "Description": "POC Sql DB Instance",
+               "Description": "POC Sql Server",
+               "Description1": "POC Sql DB Instance",
 	       "CreatedBy": "NIS NDX CD Team",
-         "Environment": "ALPHA",
-         "OS": "PAAS"
+               "Environment": "ALPHA",
+               "OS": "PAAS",
 	       "ServerRole": "DB"
       }
     }
@@ -144,8 +144,7 @@
           }
         }
       ]
-    },
-    }
+   }
   ],
     "outputs": {
         "adminUsername": {
