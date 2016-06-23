@@ -38,8 +38,19 @@
       "metadata": {
         "description": "Securtity group name as a string."
       }
-    },
-	"subnet1Name": {
+     },
+     "tagvalues": {
+      "type": "object",
+      "defaultValue": {
+	      "ApplicationName": "Linux POC",
+	      "CostCenter": "5501936",
+              "Description": "POC server Unix",
+	      "CreatedBy": "NIS NDX CD Team",
+              "Environment": "ALPHA",
+	      "ServerRole": "WEB"
+      }
+    }, 
+    "subnet1Name": {
       "type": "string",
       "metadata": {
         "description": "Subnet Name as a string."
@@ -54,14 +65,6 @@
     "imageOffer": "RHEL",
     "OSVersion": "7.2",
     "osDiskName": "osDisk1",
-    "tags": {
-            "ApplicationName": "Tomcat POC",
-	    "CostCenter": "5501936",
-            "Description": "POC server",
-	    "CreatedBy": "Praneeth Putha",
-            "Environment": "ALPHA",
-	    "ServerRole": "WEB"
-        },
     "sshKeyPath": "[concat('/home/',parameters('adminUserName'),'/.ssh/authorized_keys')]",
     "vnetID": "[resourceId('BUYNONPROD1-NW', 'Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]",
     "subnet1Ref": "[concat(variables('vnetID'),'/subnets/',parameters('subnet1Name'))]",
@@ -74,13 +77,13 @@
       "name": "[variables('nicName')]",
       "location": "[variables('location')]",
       "tags": {
-            "ApplicationName": "Tomcat POC",
-	    "CostCenter": "5501936",
-            "Description": "POC server NIC",
-	    "CreatedBy": "Praneeth Putha",
-            "Environment": "ALPHA",
-	    "ServerRole": "WEB"
-        },
+            "ApplicationName": "[parameters('tagvalues').ApplicationName]",
+	          "CostCenter": "[parameters('tagvalues').CostCenter]",
+            "Description": "[parameters('tagvalues').Description]",
+	          "CreatedBy": "[parameters('tagvalues').CreatedBy]",
+            "Environment": "[parameters('tagvalues').Environment]",
+	          "ServerRole": "[parameters('tagvalues').ServerRole]"
+      },
       "properties": {
         "ipConfigurations": [
           {
@@ -106,6 +109,14 @@
       "dependsOn": [
         "[concat('Microsoft.Network/networkInterfaces/', variables('nicName'))]"
       ],
+      "tags": {
+            "ApplicationName": "[parameters('tagvalues').ApplicationName]",
+	          "CostCenter": "[parameters('tagvalues').CostCenter]",
+            "Description": "[parameters('tagvalues').Description]",
+	          "CreatedBy": "[parameters('tagvalues').CreatedBy]",
+            "Environment": "[parameters('tagvalues').Environment]",
+	          "ServerRole": "[parameters('tagvalues').ServerRole]"
+      },
       "properties": {
         "hardwareProfile": {
           "vmSize": "[variables('vmSize')]"
