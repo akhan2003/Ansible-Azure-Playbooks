@@ -43,12 +43,12 @@
       "type": "object",
       "defaultValue": {
         "ApplicationName": "Windows POC",
-	      "CostCenter": "5501936",
+	 "CostCenter": "5501936",
         "Description": "POC server Windows",
         "Description1": "POC server WIndows NIC",
-	      "CreatedBy": "NIS NDX CD Team",
+	"CreatedBy": "NIS NDX CD Team",
         "Environment": "ALPHA",
-	      "ServerRole": "WEB"
+	"ServerRole": "WEB"
       }
     },
 	  "subnet1Name": {
@@ -80,11 +80,11 @@
       "location": "[variables('location')]",
       "tags": {
             "ApplicationName": "[parameters('tagvalues').ApplicationName]",
-	          "CostCenter": "[parameters('tagvalues').CostCenter]",
+	    "CostCenter": "[parameters('tagvalues').CostCenter]",
             "Description": "[parameters('tagvalues').Description1]",
-	          "CreatedBy": "[parameters('tagvalues').CreatedBy]",
+	    "CreatedBy": "[parameters('tagvalues').CreatedBy]",
             "Environment": "[parameters('tagvalues').Environment]",
-	          "ServerRole": "[parameters('tagvalues').ServerRole]"
+	    "ServerRole": "[parameters('tagvalues').ServerRole]"
       },
       "properties": {
         "ipConfigurations": [
@@ -113,11 +113,11 @@
       ],
       "tags": {
             "ApplicationName": "[parameters('tagvalues').ApplicationName]",
-	          "CostCenter": "[parameters('tagvalues').CostCenter]",
+	    "CostCenter": "[parameters('tagvalues').CostCenter]",
             "Description": "[parameters('tagvalues').Description]",
-	          "CreatedBy": "[parameters('tagvalues').CreatedBy]",
+	    "CreatedBy": "[parameters('tagvalues').CreatedBy]",
             "Environment": "[parameters('tagvalues').Environment]",
-	          "ServerRole": "[parameters('tagvalues').ServerRole]"
+	    "ServerRole": "[parameters('tagvalues').ServerRole]"
       },
       "properties": {
         "hardwareProfile": {
