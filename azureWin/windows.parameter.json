@@ -3,7 +3,7 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
         "adminUserName": {
-            "value": "cd3user"
+            "value": "cd3ans"
         },
         "adminPassword": {
         "value": "P@55word1239"
