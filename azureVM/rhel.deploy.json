@@ -39,6 +39,12 @@
         "description": "Securtity group name as a string."
       }
      },
+     "vmSize": {
+      "type": "string",
+      "metadata": {
+        "description": "Virtual VM Size as a string."
+      }
+     },
      "tagvalues": {
       "type": "object",
       "defaultValue": {
@@ -59,7 +65,6 @@
   },
   "variables": {
     "nicName": "[concat(parameters('vmName'),'-NIC')]",
-    "vmSize": "Standard_DS2",
     "location": "[resourceGroup().location]",
     "imagePublisher": "RedHat",
     "imageOffer": "RHEL",
@@ -119,7 +124,7 @@
       },
       "properties": {
         "hardwareProfile": {
-          "vmSize": "[variables('vmSize')]"
+          "vmSize": "[parameters('vmSize')]"
         },
         "osProfile": {
           "computerName": "[parameters('vmName')]",
