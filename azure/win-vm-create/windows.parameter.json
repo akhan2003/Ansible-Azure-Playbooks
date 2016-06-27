@@ -3,25 +3,25 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
         "adminUserName": {
-            "value": "cd3ans"
+            "value": "sample"
         },
         "adminPassword": {
-        "value": "P@55word1239"
+        "value": "sample"
         },
         "vmName": {
-            "value": "AUE2NDXWEBD001"
+            "value": "sample"
         },
         "storageAccountName": {
-            "value": "aue2strwebdev001"
+            "value": "sample"
         },
         "virtualNetworkName": {
-            "value": "BUYNONPROD1-VN"
+            "value": "sample-VN"
         },
         "networkSecurityGroupName": {
-            "value": "aue2nsgwebdev001"
+            "value": "sample"
         },
         "subnet1Name": {
-            "value": "BUYDEV1-PRIVATESN"
+            "value": "sample-sample"
         }
     }
 }
