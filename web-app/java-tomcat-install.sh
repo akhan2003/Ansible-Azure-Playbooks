@@ -1,7 +1,9 @@
 # Install Java
+echo $1 >> ~/test.yml
 sudo yum -y update
 sudo yum install -y $1
 
+echo $2 >> ~/test.yml
 # Install tomcat
 sudo yum install -y  $2
 
