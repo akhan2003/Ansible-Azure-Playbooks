@@ -47,7 +47,7 @@
 		"sqlAutopatchingDayOfWeek": "Sunday",
 		"diskSizeInGB": 50
 		"sqlVMPrepareModulesURL": "https://raw.githubusercontent.com/praneethr/Ansible-Azure-Playbooks/master/azure/sql-server-create/PrepareSqlServer.ps1.zip",
-		"sqlVMPrepareConfigurationFunction": "PrepareSqlServerSa.ps1\PrepareSqlServerSa",
+		"sqlVMPrepareConfigurationFunction": "PrepareSqlServerSa.ps1\\PrepareSqlServerSa",
 		"dataDiskName": "datadisk",
 		"sqlAutopatchingStartHour": "2",
 		"sqlAutopatchingWindowDuration": "60",
@@ -187,7 +187,7 @@
                 "AdminPassword": "[parameters('adminPassword')]",
                }
             }
-         }
+         },
             "dependsOn": [
                 "[concat('Microsoft.Compute/virtualMachines/', parameters('vmName'), '/extensions/SqlIaasExtension')]"
             ]
