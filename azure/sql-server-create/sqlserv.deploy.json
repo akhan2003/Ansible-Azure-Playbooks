@@ -32,20 +32,24 @@
     },
         "adminPassword": {
             "type": "SecureString"
+        },
+        "virtualNetworkName": {
+            "type": "SecureString"
+        },
+        "subnet1Name": {
+            "type": "SecureString"
         }
     },
     "variables": {
-		"virtualNetworkName": "BUYNONPROD1-VN",
-		"subnetName": "BUYDEV1-PRIVATESN",
 		"sqlPortNumber": 1433,
 		"sqlStorageDisksCount": 1,
 		"sqlStorageWorkloadType": "General",
 		"sqlAutopatchingDayOfWeek": "Sunday",
 		"sqlAutopatchingStartHour": "2",
 		"sqlAutopatchingWindowDuration": "60",
-        "vnetId": "[resourceId('BUYNONPROD1-NW','Microsoft.Network/virtualNetworks', variables('virtualNetworkName'))]",
+        "vnetId": "[resourceId('BUYNONPROD1-NW','Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]",
 		"location": "[resourceGroup().location]",
-        "subnetRef": "[concat(variables('vnetId'), '/subnets/', parameters('subnetName'))]",
+        "subnetRef": "[concat(variables('vnetId'), '/subnets/', parameters('subnet1Name'))]",
 		"osDiskName": "osDisk1",
 		"sqlConnectivityType": "Public",
 		"networkInterfaceName": "[concat(parameters('vmName'),'-NIC')]"
