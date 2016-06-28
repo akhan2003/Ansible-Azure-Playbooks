@@ -15,12 +15,14 @@
         "networkSecurityGroupName": {
             "type": "String"
         },
+        "virtualMachineSize": {
+            "type": "String"
+        },
         "adminPassword": {
             "type": "SecureString"
         }
     },
     "variables": {
-		"virtualMachineSize": "Standard_D2_V2"
 		"virtualNetworkName": "BUYNONPROD1-VN",
 		"subnetName": "BUYDEV1-PRIVATESN",
 		"sqlPortNumber": 1433,
@@ -33,7 +35,7 @@
 		"location": "[resourceGroup().location]",
         "subnetRef": "[concat(variables('vnetId'), '/subnets/', parameters('subnetName'))]",
 		"osDiskName": "osDisk1",
-		"sqlConnectivityType" "Public",
+		"sqlConnectivityType": "Public",
 		"networkInterfaceName": "[concat(parameters('virtualMachineName'),'-NIC')]"
         
     },
