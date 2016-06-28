@@ -42,7 +42,7 @@
     },
     "variables": {
 		"sqlPortNumber": 1433,
-		"sqlStorageDisksCount": 1,
+		"sqlStorageDisksCount": 2,
 		"sqlStorageWorkloadType": "General",
 		"sqlAutopatchingDayOfWeek": "Sunday",
 		"sqlAutopatchingStartHour": "2",
