@@ -227,6 +227,10 @@
         "adminUsername": {
             "type": "String",
             "value": "[parameters('adminUsername')]"
+        },
+        "nic": {
+           "type": "object",
+           "value": "[reference(variables('nicName'))]"
         }
     }
 }
