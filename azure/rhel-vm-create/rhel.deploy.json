@@ -53,6 +53,7 @@
               "Description": "POC server Unix",
 	      "CreatedBy": "NIS NDX CD Team",
               "Environment": "ALPHA",
+              "OS": "RHEL"
 	      "ServerRole": "WEB"
       }
     }, 
@@ -120,6 +121,7 @@
             "Description": "[parameters('tagvalues').Description]",
 	          "CreatedBy": "[parameters('tagvalues').CreatedBy]",
             "Environment": "[parameters('tagvalues').Environment]",
+                        "OS": "[parameters('tagvalues').OS]",
 	          "ServerRole": "[parameters('tagvalues').ServerRole]"
       },
       "properties": {
