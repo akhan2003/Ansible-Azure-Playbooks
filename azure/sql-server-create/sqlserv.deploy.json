@@ -45,7 +45,7 @@
 		"sqlStorageDisksCount": 1,
 		"sqlStorageWorkloadType": "General",
 		"sqlAutopatchingDayOfWeek": "Sunday",
-		"diskSizeInGB": 50
+		"diskSizeInGB": 50,
 		"sqlVMPrepareModulesURL": "https://raw.githubusercontent.com/praneethr/Ansible-Azure-Playbooks/master/azure/sql-server-create/PrepareSqlServer.ps1.zip",
 		"sqlVMPrepareConfigurationFunction": "PrepareSqlServerSa.ps1\\PrepareSqlServerSa",
 		"dataDiskName": "datadisk",
