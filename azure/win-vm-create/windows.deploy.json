@@ -4,7 +4,7 @@
   "parameters": {
     "adminUserName": {
       "type": "string",
-      "defaultValue": "cd3user",
+      "defaultValue": "cd3ans",
       "metadata": {
         "description": "User name for the Virtual Machine."
       }
@@ -42,12 +42,13 @@
     "tagvalues": {
       "type": "object",
       "defaultValue": {
-        "ApplicationName": "Windows POC",
+        "ApplicationName": "NDX",
+        "OS": "Windows",
 	 "CostCenter": "5501936",
         "Description": "POC server Windows",
         "Description1": "NIC for POC server WIndows ",
 	"CreatedBy": "NIS NDX CD Team",
-        "Environment": "ALPHA",
+        "Environment": "DEV",
 	"ServerRole": "WEB"
       }
     },
@@ -80,6 +81,7 @@
       "location": "[variables('location')]",
       "tags": {
             "ApplicationName": "[parameters('tagvalues').ApplicationName]",
+            "OS": "[parameters('tagvalues').OS]",
 	    "CostCenter": "[parameters('tagvalues').CostCenter]",
             "Description": "[parameters('tagvalues').Description1]",
 	    "CreatedBy": "[parameters('tagvalues').CreatedBy]",
