@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         
-        "virtualMachineName": {
+        "vmName": {
             "type": "String"
         },
         "adminUsername": {
@@ -15,7 +15,7 @@
         "networkSecurityGroupName": {
             "type": "String"
         },
-        "virtualMachineSize": {
+        "vmSize": {
             "type": "String"
         },
      	"tagvalues": {
@@ -48,13 +48,13 @@
         "subnetRef": "[concat(variables('vnetId'), '/subnets/', parameters('subnetName'))]",
 		"osDiskName": "osDisk1",
 		"sqlConnectivityType": "Public",
-		"networkInterfaceName": "[concat(parameters('virtualMachineName'),'-NIC')]"
+		"networkInterfaceName": "[concat(parameters('vmName'),'-NIC')]"
         
     },
     "resources": [
         {
             "type": "Microsoft.Compute/virtualMachines",
-            "name": "[parameters('virtualMachineName')]",
+            "name": "[parameters('vmName')]",
             "apiVersion": "2015-06-15",
             "location": "[variables('location')]",
             "tags": {
@@ -68,7 +68,7 @@
       		},
             "properties": {
                 "osProfile": {
-                    "computerName": "[parameters('virtualMachineName')]",
+                    "computerName": "[parameters('vmName')]",
                     "adminUsername": "[parameters('adminUsername')]",
                     "adminPassword": "[parameters('adminPassword')]",
                     "windowsConfiguration": {
@@ -76,7 +76,7 @@
                     }
                 },
                 "hardwareProfile": {
-                    "vmSize": "[parameters('virtualMachineSize')]"
+                    "vmSize": "[parameters('vmSize')]"
                 },
                 "storageProfile": {
                     "imageReference": {
@@ -86,9 +86,9 @@
                         "version": "latest"
                     },
                     "osDisk": {
-                        "name": "[parameters('virtualMachineName')]",
+                        "name": "[parameters('vmName')]",
                         "vhd": {
-                            "uri": "[concat(concat(reference(resourceId('BUYDEV1NDXNISRG-APP', 'Microsoft.Storage/storageAccounts', parameters('storageAccountName')), '2015-06-15').primaryEndpoints['blob'], 'vhds/'), parameters('virtualMachineName'), variables('osDiskName'), '.vhd')]"
+                            "uri": "[concat(concat(reference(resourceId('BUYDEV1NDXNISRG-APP', 'Microsoft.Storage/storageAccounts', parameters('storageAccountName')), '2015-06-15').primaryEndpoints['blob'], 'vhds/'), parameters('vmName'), variables('osDiskName'), '.vhd')]"
                         },
                         "createOption": "fromImage"
                     }
@@ -107,7 +107,7 @@
         },
         {
             "type": "Microsoft.Compute/virtualMachines/extensions",
-            "name": "[concat(parameters('virtualMachineName'), '/SqlIaasExtension')]",
+            "name": "[concat(parameters('vmName'), '/SqlIaasExtension')]",
             "apiVersion": "2015-06-15",
             "location": "[variables('location')]",
             "properties": {
@@ -139,7 +139,7 @@
                 "protectedSettings": {}
             },
             "dependsOn": [
-                "[concat('Microsoft.Compute/virtualMachines/', parameters('virtualMachineName'))]",
+                "[concat('Microsoft.Compute/virtualMachines/', parameters('vmName'))]",
             ]
         },
         {
@@ -153,7 +153,7 @@
                 },
                 "parameters": {
                     "sqlVMName": {
-                        "value": "[parameters('virtualMachineName')]"
+                        "value": "[parameters('vmName')]"
                     },
                     "location": {
                         "value": "[variables('location')]"
@@ -194,7 +194,7 @@
                 }
             },
             "dependsOn": [
-                "[concat('Microsoft.Compute/virtualMachines/', parameters('virtualMachineName'), '/extensions/SqlIaasExtension')]"
+                "[concat('Microsoft.Compute/virtualMachines/', parameters('vmName'), '/extensions/SqlIaasExtension')]"
             ]
         },
         {
