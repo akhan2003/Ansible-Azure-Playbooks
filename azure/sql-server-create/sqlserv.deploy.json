@@ -178,7 +178,7 @@
                         "value": "[variables('sqlStorageDisksCount')]"
                     },
                     "diskSizeInGB": {
-                        "value": 250
+                        "value": 50
                     },
                     "sqlEnginePort": {
                         "value": "[variables('sqlPortNumber')]"
