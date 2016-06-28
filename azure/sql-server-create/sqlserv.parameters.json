@@ -17,6 +17,12 @@
         "networkSecurityGroupName": {
             "value": "sample"
         },
+        "virtualNetworkName": {
+            "value": "sample"
+        },
+        "subnet1Name": {
+            "value": "sample"
+        },
         "adminPassword": {
             "value": "temp"
         }
