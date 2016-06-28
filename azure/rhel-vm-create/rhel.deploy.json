@@ -71,6 +71,7 @@
     "imageOffer": "RHEL",
     "OSVersion": "7.2",
     "osDiskName": "osDisk1",
+    "dataDiskName": "dataDisk1",
     "sshKeyPath": "[concat('/home/',parameters('adminUserName'),'/.ssh/authorized_keys')]",
     "vnetID": "[resourceId('BUYNONPROD1-NW', 'Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]",
     "subnet1Ref": "[concat(variables('vnetID'),'/subnets/',parameters('subnet1Name'))]",
@@ -157,7 +158,19 @@
             },
             "caching": "ReadWrite",
             "createOption": "FromImage"
-          }
+          },
+          "dataDisks": [
+            {
+              "lun": 0,
+              "name": "datadisk",
+              "createOption": "Empty",
+              "vhd": {
+                 "uri": "[concat(concat(reference(resourceId('BUYDEV1NDXNISRG-APP', 'Microsoft.Storage/storageAccounts', parameters('storageAccountName')), '2015-06-15').primaryEndpoints['blob'], 'vhds/'), parameters('vmName'), variables('dataDiskName'), '.vhd')]"
+              },
+              "caching": "ReadOnly",
+              "diskSizeGB": "200"
+            }
+          ]
         },
         "networkProfile": {
           "networkInterfaces": [
