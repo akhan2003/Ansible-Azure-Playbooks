@@ -18,6 +18,18 @@
         "virtualMachineSize": {
             "type": "String"
         },
+     	"tagvalues": {
+      	"type": "object",
+      	"defaultValue": {
+	      "ApplicationName": "SQL Server",
+	      "CostCenter": "5501936",
+              "Description": "Sql server windows",
+	      "CreatedBy": "NIS NDX CD Team",
+              "Environment": "DEV",
+              "OS": "Windows",
+	      "ServerRole": "SQLDB"
+      }
+    },
         "adminPassword": {
             "type": "SecureString"
         }
@@ -45,6 +57,15 @@
             "name": "[parameters('virtualMachineName')]",
             "apiVersion": "2015-06-15",
             "location": "[variables('location')]",
+            "tags": {
+            "ApplicationName": "[parameters('tagvalues').ApplicationName]",
+	          "CostCenter": "[parameters('tagvalues').CostCenter]",
+            "Description": "[parameters('tagvalues').Description]",
+	          "CreatedBy": "[parameters('tagvalues').CreatedBy]",
+            "Environment": "[parameters('tagvalues').Environment]",
+            "OS": "[parameters('tagvalues').OS]",
+	          "ServerRole": "[parameters('tagvalues').ServerRole]"
+      		},
             "properties": {
                 "osProfile": {
                     "computerName": "[parameters('virtualMachineName')]",
