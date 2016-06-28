@@ -230,7 +230,7 @@
         },
         "nic": {
            "type": "object",
-           "value": "[reference(variables('nicName'))]"
+           "value": "[reference(variables('networkInterfaceName'))]"
         }
     }
 }
