@@ -31,13 +31,13 @@
       }
     },
         "adminPassword": {
-            "type": "SecureString"
+            "type": "String"
         },
         "virtualNetworkName": {
-            "type": "SecureString"
+            "type": "String"
         },
         "subnet1Name": {
-            "type": "SecureString"
+            "type": "String"
         }
     },
     "variables": {
