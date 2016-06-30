@@ -1,0 +1,202 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "adminUserName": {
+      "type": "string",
+      "defaultValue": "cd3ans",
+      "metadata": {
+        "description": "User name for the Virtual Machine."
+      }
+    },
+    "sshKeyData": {
+      "type": "string",
+      "metadata": {
+        "description": "SSH rsa public key file as a string."
+      }
+    },
+    "vmName": {
+      "type": "string",
+      "metadata": {
+        "description": "Virtual Machine name as a string."
+      }
+    },
+    "storageAccountName": {
+      "type": "string",
+      "metadata": {
+        "description": "Storage Account Name as a string."
+      }
+    },
+	"virtualNetworkName": {
+      "type": "string",
+      "metadata": {
+        "description": "Virtual Network Name as a string."
+      }
+    },
+    "networkSecurityGroupName": {
+      "type": "string",
+      "metadata": {
+        "description": "Securtity group name as a string."
+      }
+     },
+     "vmSize": {
+      "type": "string",
+      "metadata": {
+        "description": "Virtual VM Size as a string."
+      }
+     },
+     "disksize": {
+      "type": "string",
+      "defaultValue": "50",
+      "metadata": {
+        "description": "Virtual VM Size as a string."
+      }
+     },
+     "tagvalues": {
+      "type": "object",
+      "defaultValue": {
+	      "ApplicationName": "Linux POC",
+	      "CostCenter": "5501936",
+              "Description": "POC server Unix",
+	      "CreatedBy": "NIS NDX CD Team",
+              "Environment": "ALPHA",
+              "OS": "RHEL",
+	      "ServerRole": "WEB"
+      }
+    }, 
+    "subnet1Name": {
+      "type": "string",
+      "metadata": {
+        "description": "Subnet Name as a string."
+      }
+    }
+  },
+  "variables": {
+    "nicName": "[concat(parameters('vmName'),'-NIC')]",
+    "location": "[resourceGroup().location]",
+    "imagePublisher": "RedHat",
+    "imageOffer": "RHEL",
+    "OSVersion": "7.2",
+    "osDiskName": "osDisk1",
+    "dataDiskName": "dataDisk1",
+    "sshKeyPath": "[concat('/home/',parameters('adminUserName'),'/.ssh/authorized_keys')]",
+    "vnetID": "[resourceId('BUYNONPROD1-NW', 'Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]",
+    "subnet1Ref": "[concat(variables('vnetID'),'/subnets/',parameters('subnet1Name'))]",
+    "apiVersion": "2016-03-30"
+  },
+  "resources": [
+    {
+      "apiVersion": "[variables('apiVersion')]",
+      "type": "Microsoft.Network/networkInterfaces",
+      "name": "[variables('nicName')]",
+      "location": "[variables('location')]",
+      "tags": {
+            "ApplicationName": "[parameters('tagvalues').ApplicationName]",
+	          "CostCenter": "[parameters('tagvalues').CostCenter]",
+            "Description": "[parameters('tagvalues').Description]",
+	          "CreatedBy": "[parameters('tagvalues').CreatedBy]",
+            "Environment": "[parameters('tagvalues').Environment]",
+	          "ServerRole": "[parameters('tagvalues').ServerRole]"
+      },
+      "properties": {
+        "ipConfigurations": [
+          {
+            "name": "ipconfig1",
+            "properties": {
+              "privateIPAllocationMethod": "Dynamic",
+              "subnet": {
+                "id": "[variables('subnet1Ref')]"
+              }
+            }
+          }
+        ],
+        "networkSecurityGroup": {
+            "id": "[resourceId('BUYUAT1NDXNISRG-APP', 'Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroupName'))]"
+        }
+      }
+    },
+    {
+      "apiVersion": "[variables('apiVersion')]",
+      "type": "Microsoft.Compute/virtualMachines",
+      "name": "[parameters('vmName')]",
+      "location": "[variables('location')]",
+      "dependsOn": [
+        "[concat('Microsoft.Network/networkInterfaces/', variables('nicName'))]"
+      ],
+      "tags": {
+            "ApplicationName": "[parameters('tagvalues').ApplicationName]",
+	          "CostCenter": "[parameters('tagvalues').CostCenter]",
+            "Description": "[parameters('tagvalues').Description]",
+	          "CreatedBy": "[parameters('tagvalues').CreatedBy]",
+            "Environment": "[parameters('tagvalues').Environment]",
+                        "OS": "[parameters('tagvalues').OS]",
+	          "ServerRole": "[parameters('tagvalues').ServerRole]"
+      },
+      "properties": {
+        "hardwareProfile": {
+          "vmSize": "[parameters('vmSize')]"
+        },
+        "osProfile": {
+          "computerName": "[parameters('vmName')]",
+          "adminUsername": "[parameters('adminUserName')]",
+          "linuxConfiguration": {
+            "disablePasswordAuthentication": "true",
+            "ssh": {
+              "publicKeys": [
+                {
+                  "path": "[variables('sshKeyPath')]",
+                  "keyData": "[parameters('sshKeyData')]"
+                }
+              ]
+            }
+          }
+        },
+        "storageProfile": {
+          "imageReference": {
+            "publisher": "[variables('imagePublisher')]",
+            "offer": "[variables('imageOffer')]",
+            "sku": "[variables('OSVersion')]",
+            "version": "latest"
+          },
+          "osDisk": {
+            "name": "osdisk",
+            "vhd": {
+              "uri": "[concat(concat(reference(resourceId('BUYUAT1NDXNISRG-APP', 'Microsoft.Storage/storageAccounts', parameters('storageAccountName')), '2015-06-15').primaryEndpoints['blob'], 'vhds/'), parameters('vmName'), variables('osDiskName'),'.vhd')]"
+            },
+            "caching": "ReadWrite",
+            "createOption": "FromImage"
+          },
+          "dataDisks": [
+            {
+              "lun": 0,
+              "name": "datadisk",
+              "createOption": "Empty",
+              "vhd": {
+                 "uri": "[concat(concat(reference(resourceId('BUYUAT1NDXNISRG-APP', 'Microsoft.Storage/storageAccounts', parameters('storageAccountName')), '2015-06-15').primaryEndpoints['blob'], 'vhds/'), parameters('vmName'), variables('dataDiskName'), '.vhd')]"
+              },
+              "caching": "ReadOnly",
+              "diskSizeGB": "[parameters('disksize')]"
+            }
+          ]
+        },
+        "networkProfile": {
+          "networkInterfaces": [
+            {
+              "id": "[resourceId('Microsoft.Network/networkInterfaces', variables('nicName'))]"
+            }
+          ]
+        }
+      }
+    }
+  ],
+    "outputs": {
+        "adminUsername": {
+            "type": "String",
+            "value": "[parameters('adminUsername')]"
+        },
+        "nic": {
+           "type": "object",
+           "value": "[reference(variables('nicName'))]"
+        }
+    }
+}
