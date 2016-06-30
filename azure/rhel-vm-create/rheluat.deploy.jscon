@@ -161,7 +161,7 @@
           "osDisk": {
             "name": "osdisk",
             "vhd": {
-              "uri": "[concat(concat(reference(resourceId('BUYUAT1NDXNISRG-APP', 'Microsoft.Storage/storageAccounts', parameters('storageAccountName')), '2015-06-15').primaryEndpoints['blob'], 'vhds/'), parameters('vmName'), variables('osDiskName'),'.vhd')]"
+              "uri": "[concat(concat(reference(resourceId('BUYUAT1NDXNISRG-APP', 'Microsoft.Storage/storageAccounts', parameters('storageAccountName')), '2015-06-15').primaryEndpoints['blob'], 'osvhds/'), parameters('vmName'), variables('osDiskName'),'.vhd')]"
             },
             "caching": "ReadWrite",
             "createOption": "FromImage"
@@ -172,7 +172,7 @@
               "name": "datadisk",
               "createOption": "Empty",
               "vhd": {
-                 "uri": "[concat(concat(reference(resourceId('BUYUAT1NDXNISRG-APP', 'Microsoft.Storage/storageAccounts', parameters('storageAccountName')), '2015-06-15').primaryEndpoints['blob'], 'vhds/'), parameters('vmName'), variables('dataDiskName'), '.vhd')]"
+                 "uri": "[concat(concat(reference(resourceId('BUYUAT1NDXNISRG-APP', 'Microsoft.Storage/storageAccounts', parameters('storageAccountName')), '2015-06-15').primaryEndpoints['blob'], 'datavhds/'), parameters('vmName'), variables('dataDiskName'), '.vhd')]"
               },
               "caching": "ReadOnly",
               "diskSizeGB": "[parameters('disksize')]"
