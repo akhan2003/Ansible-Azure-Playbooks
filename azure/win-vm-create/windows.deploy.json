@@ -33,6 +33,13 @@
         "description": "Virtual Network Name as a string."
       }
     },
+    "disksize": {
+      "type": "string",
+      "defaultValue": "50",
+      "metadata": {
+        "description": "Disk Size as a string."
+      }
+     },
     "networkSecurityGroupName": {
       "type": "string",
       "metadata": {
@@ -144,7 +151,19 @@
             },
             "caching": "ReadWrite",
             "createOption": "FromImage"
-          }
+          },
+          "dataDisks": [
+            {
+              "lun": 0,
+              "name": "datadisk",
+              "createOption": "Empty",
+              "vhd": {
+                 "uri": "[concat(concat(reference(resourceId('BUYDEV1NDXNISRG-APP', 'Microsoft.Storage/storageAccounts', parameters('storageAccountName')), '2015-06-15').primaryEndpoints['blob'], 'vhds/'), parameters('vmName'), variables('dataDiskName'), '.vhd')]"
+              },
+              "caching": "ReadOnly",
+              "diskSizeGB": "[parameters('disksize')]"
+            }
+          ]
         },
         "networkProfile": {
           "networkInterfaces": [
@@ -155,5 +174,15 @@
         }
       }
     }
-  ]
+  ],
+    "outputs": {
+        "adminUsername": {
+            "type": "String",
+            "value": "[parameters('adminUsername')]"
+        },
+        "nic": {
+           "type": "object",
+           "value": "[reference(variables('nicName'))]"
+        }
+    }
 }
