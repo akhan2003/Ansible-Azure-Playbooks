@@ -82,6 +82,7 @@
     "imageOffer": "WindowsServer",
     "windowsOSVersion": "2012-R2-Datacenter",
     "osDiskName": "osDisk1",
+    "dataDiskName": "dataDisk1",
     "vnetID": "[resourceId('BUYNONPROD1-NW', 'Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]",
     "subnet1Ref": "[concat(variables('vnetID'),'/subnets/',parameters('subnet1Name'))]",
     "apiVersion": "2016-03-30"
