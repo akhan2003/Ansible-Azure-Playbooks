@@ -27,7 +27,13 @@
         "description": "Storage Account Name as a string."
       }
     },
-	  "virtualNetworkName": {
+    "vmSize": {
+      "type": "string",
+      "metadata": {
+        "description": "Storage Account Name as a string."
+      }
+    },
+	"virtualNetworkName": {
       "type": "string",
       "metadata": {
         "description": "Virtual Network Name as a string."
@@ -69,7 +75,7 @@
   "variables": {
     "nicName": "[concat(parameters('vmName'),'-NIC')]",
     "sizeOfDiskInGB": "100",
-    "vmSize": "Standard_DS2",
+    "vmSize": "[parameters('vmSize')]",
     "location": "[resourceGroup().location]",
     "dataDisk1VhdName": "datadisk1",
     "imagePublisher": "MicrosoftWindowsServer",
