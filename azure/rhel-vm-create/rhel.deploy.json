@@ -62,7 +62,7 @@
 	      "CreatedBy": "NIS NDX CD Team",
               "Environment": "ALPHA",
               "OS": "RHEL",
-	      "ServerRole": "WEB"
+              "ServerRole": "WEB"
       }
     }, 
     "subnet1Name": {
