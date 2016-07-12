@@ -81,7 +81,7 @@
     "osDiskName": "osDisk1",
     "dataDiskName": "dataDisk1",
     "sshKeyPath": "[concat('/home/',parameters('adminUserName'),'/.ssh/authorized_keys')]",
-    "vnetID": "[resourceId('BUYNONPROD1-NW', 'Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]",
+    "vnetID": "[resourceId('BUYDEV1NDXNISRG-APP', 'Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]",
     "subnet1Ref": "[concat(variables('vnetID'),'/subnets/',parameters('subnet1Name'))]",
     "apiVersion": "2016-03-30"
   },
