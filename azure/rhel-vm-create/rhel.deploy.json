@@ -9,11 +9,10 @@
         "description": "User name for the Virtual Machine."
       }
     },
-   "adminPassword": {
+    "sshKeyData": {
       "type": "string",
-      "defaultValue": "Pass@word1",
       "metadata": {
-        "description": "password for the Virtual Machine."
+        "description": "SSH rsa public key file as a string."
       }
     },
     "vmName": {
