@@ -1,0 +1,50 @@
+---
+- hosts: localhost
+  connection: local
+  gather_facts: yes
+  tasks:
+    - name: "Create Azure Deploy"
+      azure_rm_deployment:
+        state: present
+        subscription_id: 9200fcbe-dc3e-4a98-bce0-649c26b7d26c
+        resource_group_name: BUYDEV1NDXNISRG-APP
+        location: eastus2
+        deployment_mode: incremental
+        parameters:
+          adminUserName:
+            value: cd3ans
+          sshKeyData:
+            value: 'ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEAv02/hHYiD0xZlKyWWLPiS/G26UsZYcwQIJstnmOUJNACpwkRlIcLGgM1Uc1qbpJHq2cJbxD5g/xJ/dYyU1IyVJKyhriPv2OW1kieYU4y6Mxmf+my+hKuLzfvO+eIctrIUnmD8WkbvqeQbFshlVYdrqFimBdwHDzd8xEfzTQKSBVjrWr7u0wqh7Q05K71OMyQaC7Q3U7HqZfRLwY04bu6Ihj4hL/eaNFHa0+nkRs8rhJFr56W02+qPWZZpE/2TAQJGM+FnzPjdc1Y7MXVWa1uOmKAXhRZX+sRsE43AygNbRSpdSovaMlb8lVkxwPKrMCs1Jc5AhlqzgG2X3raCBqLzQ== rsa-key-20160707'
+          vmName:
+            value: AMKRHENDXTISD02
+          storageAccountName:
+            value: buydevstrndxd02
+          vmSize:
+            value: Standard_D3_v2
+          virtualNetworkName:
+            value: BUYNONPROD1-VN
+          networkSecurityGroupName:
+            value: buydevnsgbased02
+          tagvalues:
+            value: {
+              "ApplicationName": "NDX CD",
+              "CostCenter": "5501936",
+              "Description": "Tomcat Iserver Dev",
+              "Description1": "Tomcat Iserver Dev NIC",
+              "CreatedBy": "NIS NDX CD Team",
+              "Environment": "DEV",
+			  "OS": "RHEL",
+              "ServerRole": "TIS"
+              }
+          subnet1Name:
+            value: BUYDEV1-PRIVATESN
+        template_link: 'https://raw.githubusercontent.com/akhan2003/Ansible-Azure-Playbooks/master/azure/rhel-vm-create/rhel.deploy.json'
+      register: azure
+    - name: "debug"
+      debug: var=azure.deployment.outputs.nic.value.ipConfigurations
+    - name: "debug a var"
+      debug: var=azure.deployment.outputs.nic.value.ipConfigurations[0].properties.privateIPAddress
+    - name: Add new instance to host group
+      add_host: hostname={{ item.properties.privateIPAddress }} groupname=azure_vms
+      with_items: "{{ azure.deployment.outputs.nic.value.ipConfigurations }}"
+
