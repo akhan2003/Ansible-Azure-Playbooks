@@ -1,0 +1,18 @@
+---
+- hosts: localhost
+  connection: local
+  gather_facts: yes
+  tasks:
+    - name: "Create a Network Security Group"
+      azure_rm_securitygroup:
+        resource_group: BUYDEV1NDXNISRG-APP
+        name: "{{ nsgname }}"
+        rules:
+            - name: AllowSSHFromHome
+              protocol: Tcp
+              destination_port_range: 22-23
+              access: Allow
+              priority: 1000
+              direction: Inbound
+
+
